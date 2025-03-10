@@ -5,7 +5,6 @@ This extension provides syntax highlighting for the Althread programming languag
 ## Features
 - Syntax highlighting for `.alt` files.
 - Support for Althread keywords, operators, datatypes, and more.
-- Highlights `return` only in `inline` function blocks.
 
 ## Usage
 Open any `.alt` file to see Althread syntax highlighting in action.
