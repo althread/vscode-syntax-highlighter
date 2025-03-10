@@ -1,6 +1,7 @@
 # althread README
 
-This is the README for your extension "althread". After writing up a brief description, we recommend including the following sections.
+This is the README for your extension "althread".
+Simple syntax highlighting, so it doesn't look that uncolorful.
 
 ## Features
 
