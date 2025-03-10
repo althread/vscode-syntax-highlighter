@@ -1,0 +1,109 @@
+{
+	"name": "Althread",
+	"scopeName": "source.althread",
+	"fileTypes": [".alt"],
+	"patterns": [
+	  { "include": "#comments" },
+	  { "include": "#keywords" },
+	  { "include": "#operators" },
+	  { "include": "#datatypes" },
+	  { "include": "#literals" },
+	  { "include": "#identifiers" },
+	  { "include": "#strings" },
+	  { "include": "#blocks" }
+	],
+	"repository": {
+	  "comments": {
+		"patterns": [
+		  {
+			"name": "comment.line.double-slash.althread",
+			"match": "//.*$"
+		  },
+		  {
+			"name": "comment.block.althread",
+			"begin": "/\\*",
+			"end": "\\*/",
+			"patterns": [{ "match": "." }]
+		  }
+		]
+	  },
+	  "keywords": {
+		"patterns": [
+		  {
+			"name": "keyword.control.althread",
+			"match": "\\b(main|shared|program|wait|always|never|run|let|const|if|else|while|for|loop|break|continue|send|receive|channel|inline|return|first|seq|atomic|true|false|null)\\b"
+		  }
+		]
+	  },
+	  "operators": {
+		"patterns": [
+		  {
+			"name": "keyword.operator.althread",
+			"match": "\\+|-|\\*|/%|==|!=|<|>|<=|>=|&&|\\|\\||\\!|\\.\\.|=|\\+=|-=|\\*=|/=|%=|\\|=|=>|->"
+		  }
+		]
+	  },
+	  "datatypes": {
+		"patterns": [
+		  {
+			"name": "support.type.althread",
+			"match": "\\b(bool|int|float|string|void|list|proc)\\b"
+		  }
+		]
+	  },
+	  "literals": {
+		"patterns": [
+		  {
+			"name": "constant.numeric.integer.althread",
+			"match": "\\b[0-9]+\\b"
+		  },
+		  {
+			"name": "constant.numeric.float.althread",
+			"match": "\\b[0-9]+\\.[0-9]+\\b"
+		  }
+		]
+	  },
+	  "strings": {
+		"patterns": [
+		  {
+			"name": "string.quoted.double.althread",
+			"begin": "\"",
+			"end": "\"",
+			"patterns": [
+			  { "match": "\\\\.", "name": "constant.character.escape.althread" }
+			]
+		  }
+		]
+	  },
+	  "identifiers": {
+		"patterns": [
+		  {
+			"name": "variable.althread",
+			"match": "\\b(?!main|shared|program|wait|always|never|run|let|const|if|else|while|for|loop|break|continue|send|receive|channel|inline|return|first|seq|atomic|true|false|null|bool|int|float|string|void|list|proc)[a-zA-Z][a-zA-Z0-9_]*\\b"
+		  }
+		]
+	  },
+	  "blocks": {
+		"patterns": [
+		  {
+			"name": "meta.block.althread",
+			"begin": "{",
+			"end": "}",
+			"patterns": [{ "include": "$self" }]
+		  },
+		  {
+			"name": "meta.list.althread",
+			"begin": "\\[",
+			"end": "\\]",
+			"patterns": [{ "include": "$self" }]
+		  },
+		  {
+			"name": "meta.parens.althread",
+			"begin": "\\(",
+			"end": "\\)",
+			"patterns": [{ "include": "$self" }]
+		  }
+		]
+	  }
+	}
+  }

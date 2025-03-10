@@ -1,0 +1,23 @@
+{
+  "name": "althread-language",
+  "displayName": "Althread Language Support",
+  "description": "Syntax highlighting for the Althread programming language",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.98.0"
+  },
+  "categories": ["Programming Languages"],
+  "contributes": {
+  "languages": [{
+    "id": "althread",
+    "aliases": ["Althread", "althread"],
+    "extensions": [".alt"],
+    "configuration": "./language-configuration.json"
+  }],
+  "grammars": [{
+    "language": "althread",
+    "scopeName": "source.althread",
+    "path": "./syntaxes/althread.tmLanguage.json"
+  }]
+}
+}
