@@ -31,7 +31,7 @@
 		"patterns": [
 		  {
 			"name": "keyword.control.althread",
-			"match": "\\b(main|shared|program|wait|always|never|run|let|const|if|else|while|for|loop|break|continue|send|receive|channel|inline|return|first|seq|atomic|true|false|null)\\b"
+			"match": "\\b(main|shared|program|wait|always|never|eventually|run|let|const|if|else|while|for|loop|break|continue|send|receive|channel|inline|return|first|seq|atomic|true|false|null)\\b"
 		  }
 		]
 	  },
