@@ -1,0 +1,65 @@
+name: Release and Publish
+
+on:
+    push:
+        tags:
+            - 'v*.*.*'  # Trigger on version tags like v1.0.0
+
+jobs:
+    build-and-release:
+        runs-on: ubuntu-latest
+
+        steps:
+          - name: Checkout repository
+            uses: actions/checkout@v4
+            
+          - name: Set up Node.js
+            uses: actions/setup-node@v4
+            with:
+              node-version: '20'  
+            
+          - name: Install dependencies
+            run: npm install
+
+          - name: Install vsce and ovsx
+            run: |
+                npm install -g @vscode/vsce
+                npm install -g ovsx
+          
+          - name: Package extension
+            run: vsce package
+
+          - name: Get VSIX file path
+            id: get_vsix_path
+            run: echo "path=$(ls *.vsix)" >> $GITHUB_OUTPUT
+
+          - name: Create Github Release
+            id: create_release
+            uses: actions/create-release@v1
+            env:
+                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            with:
+              tag_name: ${{ github.ref }}
+              release_name: Release ${{ github.ref_name }}
+              body: |
+                See CHANGELOG.md for details.
+              draft: false
+              prerelease: false
+
+          - name: Upload VSIX to Release
+            uses: actions/upload-release-asset@v1
+            env:
+                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            with:
+              upload_url: ${{ steps.create_release.outputs.upload_url }}
+              asset_path: ${{ steps.get_vsix_path.outputs.path }}
+              asset_name: ${{ steps.get_vsix_path.outputs.path }}
+              asset_content_type: application/vsix
+
+        #   - name: Publish to Visual Studio Marketplace
+        #     run: |
+        #         vsce publish --packagePath ${{ steps.get_vsix_path.outputs.path }} -p ${{ secrets.VSCE_PAT }}
+        
+        #   - name: Publish to Open VSX Registry
+        #     run: |
+        #         ovsx publish ${{ steps.get_vsix_path.outputs.path }} --p ${{ secrets.OVSX_PAT }}

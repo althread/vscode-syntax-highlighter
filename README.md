@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="light_logo.svg" alt="Althread Logo" width="128" height="128" style="opacity: 0.9;">
+  <img src="light_logo.png" alt="Althread Logo" width="128" height="128" style="opacity: 0.9;">
   
   # Althread Language Support
   
