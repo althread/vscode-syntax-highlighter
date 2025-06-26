@@ -14,8 +14,8 @@
     "extensions": [".alt"],
     "configuration": "./language-configuration.json",
     "icon": {
-      "light": "./light_logo.svg",
-      "dark": "./light_logo.svg"
+      "light": "./light_logo.png",
+      "dark": "./light_logo.png"
     }
   }],
   "grammars": [{
@@ -23,5 +23,9 @@
     "scopeName": "source.althread",
     "path": "./syntaxes/althread.tmLanguage.json"
   }]
-}
+},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/althread/vscode-syntax-highlighter.git"
+  }
 }
